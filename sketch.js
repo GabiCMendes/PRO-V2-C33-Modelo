@@ -77,7 +77,8 @@ function setup() {
   button = createImg('cut_btn.png');
   button.position(200,320);
   button.size(50,50);
-
+  button.mouseClicked(remove_rope)
+  
   button2 = createImg('cut_btn.png');
   button2.position(30,420);
   button2.size(50,50);
@@ -88,7 +89,7 @@ function setup() {
   
   //button2.mouseClick(drop);
 
-  //button2.mouseClicked(drop);
+  button2.mouseClicked(drop);
 
   ellipseMode(RADIUS);
 }
@@ -113,13 +114,13 @@ function draw()
 
   if(collide(fruit,bunny,80)==true)
   {
-   remove_rope();
+   
    bubble.visible = false;
     World.remove(engine.world,fruit);
     fruit = null;
     //bunny.change('eating');
 
-    //bunny.changeAnimation('eating');
+    bunny.changeAnimation('eating');
 
     //bunny.changeAnimation();
 
@@ -149,6 +150,7 @@ function remove_rope()
   rope.break();
   con.dettach();
   con = null; 
+
 }
 
 function collide(body,sprite,x)
